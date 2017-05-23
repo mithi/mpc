@@ -59,7 +59,6 @@ class FG_eval {
       fg[ID_FIRST_cte + 1] = x[ID_FIRST_cte];
       fg[ID_FIRST_epsi + 1] = x[ID_FIRST_epsi];
 
-
       // constraints based on our kinematic model
       for (int i = 0; i < N - 1; ++i) {
 
