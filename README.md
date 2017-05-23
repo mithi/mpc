@@ -12,6 +12,9 @@ The MPC trajectory path is displayed in green, and the polynomial fitted referen
 According to wikipedia:
 > Model predictive controllers rely on dynamic models of the process. The main advantage of MPC is the fact that it allows the current timeslot to be optimized, while keeping future timeslots in account. This is achieved by optimizing a finite time-horizon, but only implementing the current timeslot. MPC has the ability to anticipate future events and can take control actions accordingly.
 
+![MPC](https://github.com/mithi/mpc/blob/master/img/mpc.png)
+![MPC](https://github.com/mithi/mpc/blob/master/img/mpc-algo.png)
+
 In my own words, the MPC method can anticipate future events because we have an idea of what is probably gonna happen if we choose to do what we are going to do. This is because we have a model of how things work in our world (like physics for example). We can anticipate future events based on our current plan of action and also anticipate our next plan of action based on the result of the current plan. Here is a nice series of videos that give a nice overview about the concept behind MPC as well as an in depth discussion:
 - https://www.youtube.com/watch?v=4kCcXGDvjU8&list=PLs7mcKy_nInFEpygo_VrqDFCsQVnGaoy-
 
@@ -45,6 +48,8 @@ local coordinate.
 
 # CTE AND EPSI
 
+![ERROR](https://github.com/mithi/mpc/blob/master/img/errors.png)
+
 **We can compute for the errors which is the difference between our desired position and heading
 and our actual position and heading:**
 
@@ -69,7 +74,7 @@ of action. There are two modes of *actuation* we can use to control our vehicle
   **In my code, I have restricted the range to only be between -0.5 and 1** as ideally we shouldn't be suddenly pressing the brakes all of a sudden since we are able to plan ahead.
 
 # KINEMATIC MODEL
-So based on a Physics, here is a simplified version of how the world (with our vehicle in it) works. How the state variables change based elapse time `dt` and our actuations `delta` and `a`.
+So based on Physics, here is a simplified version of how the world (with our vehicle in it) works. How the state variables change based elapse time `dt` and our actuations `delta` and `a`.
 We call it our *kinematic* model.
 
 ```
