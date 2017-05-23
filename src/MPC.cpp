@@ -100,10 +100,10 @@ class FG_eval {
         // based on our kinematic model
         const auto px1_f = px0 + v0 * CppAD::cos(psi0) * dt;
         const auto py1_f = py0 + v0 * CppAD::sin(psi0) * dt;
-        const auto psi1_f = psi0 - v0 * delta0 / Lf * dt;
+        const auto psi1_f = psi0 + v0 * (-delta0) / Lf * dt;
         const auto v1_f = v0 + a0 * dt;
         const auto cte1_f = py_desired - py0 + v0 * CppAD::sin(epsi0) * dt;
-        const auto epsi1_f = psi0 - psi_desired - v0 * delta0 / Lf * dt;
+        const auto epsi1_f = psi0 - psi_desired + v0 * (-delta0) / Lf * dt;
 
         // store the constraint expression of two consecutive states
         fg[ID_CURRENT_px + 2] = px1 - px1_f;
