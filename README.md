@@ -32,7 +32,7 @@ In my own words, the MPC method can anticipate future events because we have an 
 - Complete information can be found at the initial repo
 - - https://github.com/udacity/CarND-MPC-Project
 - But in essence it's like this:
-## 1. Install dependencies, 
+### 1. Install dependencies, 
 -  Check the dependencies from the repo mentioned above.
 - for example for mac with homebrew here's what I did since I already have most of the dependencies.
 ```
@@ -52,17 +52,17 @@ cd ..
 cd ..
 sudo rm -r uWebSockets
 ```
-## 2. Install the simulator, open it and go to the MPC section
+### 2. Install the simulator, open it, and go to the MPC section
 - Here's where you can download it
 - - https://github.com/udacity/self-driving-car-sim/releases
-## 3. Clone, build and run
+### 3. Clone, compile, and run
 ```
 git clone https://github.com/mithi/mpc
 mkdir build && cd build
 cc=gcc-6 cmake .. && make
 ./mpc
 ```
-
+-----
 # THE STATE VARIABLES
 
 **The state variables for the vehicle are the following:**
