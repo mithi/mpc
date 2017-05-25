@@ -28,6 +28,40 @@ In my own words, the MPC method can anticipate future events because we have an 
 - The flow of the code is largely based on Udacity's sample code and quizzes
 - - https://github.com/udacity/CarND-MPC-Quizzes
 
+# How to use
+- Complete information can be found at the initial repo
+- - https://github.com/udacity/CarND-MPC-Project
+- But in essence it's like this:
+## 1. Install dependencies, 
+-  Check the dependencies from the repo mentioned above.
+- for example for mac with homebrew here's what I did since I already have most of the dependencies.
+```
+brew install ipopt
+brew install cppad
+brew install openssl libuv cmake zlib
+git clone https://github.com/uWebSockets/uWebSockets 
+cd uWebSockets
+patch CMakeLists.txt < ../cmakepatch.txt
+mkdir build
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig 
+cd build
+cmake ..
+make 
+sudo make install
+cd ..
+cd ..
+sudo rm -r uWebSockets
+```
+## 2. Install the simulator, open it and go to the MPC section
+- Here's where you can download it
+- - https://github.com/udacity/self-driving-car-sim/releases
+## 3. Clone, build and run
+```
+git clone https://github.com/mithi/mpc
+mkdir build && cd build
+cc=gcc-6 cmake .. && make
+./mpc
+```
 
 # THE STATE VARIABLES
 
