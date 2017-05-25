@@ -1,6 +1,6 @@
 # INTRODUCTION
 
-This is my turn-in code for one of the project in partial fulfillment of the requirements for Udacity's self-driving car Nanodegree program. In this project, I have implemented a Model Predictive Control software pipeline to drive a car around a track in a simulator. There is a 100 millisecond latency between actuation commands on top of the connection latency.
+This is my turn-in code for one of the project in partial fulfillment of the requirements for Udacity's self-driving car Nanodegree program. In this project, I have implemented a software pipeline using the model predictive control (MPC) method to drive a car around a track in a simulator. There is a 100 millisecond latency between actuation commands on top of the connection latency.
 
 ### IMPORTANT: Please view my screen recording of using my code for the vehicle to drive around the track for several laps:
 - https://www.youtube.com/watch?v=75ylhM0QsXQ
