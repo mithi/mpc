@@ -139,9 +139,9 @@ F = 150
 G = 15
 ```
 
-# Time Step Length and Frequency
+# Timestep Length and Frequency
 
-The timestep length `N` is how many states we "lookahead" in the future and the time step frequency `dt` is how much time we expect environment changes.  I chose a `dt = 0.1 seconds` because the that's the latency between actuation commands so it seemed like a good ballpark.  It doesn't make sense to *look too far to the future* because that future might not be as we expect it, so we must not calculate too much before getting feedback from the environment. Also, it will take a long time to look for the best move as I have set this to a time limit of 0.5 seconds. If the `N` is too small, this makes us too short-sighted which defeat the purpose of planning for the future. If the `N` is too small we might not be able to take advantage of looking ahead to plan for curves that we might not be able to do with simpler and less sophisticated control methods like PID. I started with `N = 6` because that's the number of `waypoints` given to us but looking at the displayed green line at the simulator makes too short to plan for curves. At `N = 15` I noticed that given the time limit of 0.5 seconds, I running out of time to minimize the cost objective. With trial-and-error I found that `N = 10` was good.
+The timestep length `N` is how many states we "lookahead" in the future and the time step frequency `dt` is how much time we expect environment changes.  I chose a `dt = 0.1 seconds` because the that's the latency between actuation commands so it seemed like a good ballpark.  If the `N` is too small, this makes us too short-sighted which defeat the purpose of planning for the future. If the `N` is too small we might not be able to take advantage of looking ahead to plan for curves that we might not be able to do with simpler and less sophisticated control methods like PID. It doesn't make sense to *look too far to the future* because that future might not be as we expect it, so we must not calculate too much before getting feedback from the environment. Also, it will take a long time to look for the best move as I have set this to a time limit of 0.5 seconds *(The default option from the mpc quizzes the code approach was modeled after)*. I started with `N = 6` because that's the number of `waypoints` given to us but looking at the displayed green line at the simulator makes too short to plan for curves. At `N = 15` I noticed that given the time limit of 0.5 seconds, it seems that the computer was running out of time to find the best variables that have minimized the cost well. With trial-and-error I found that `N = 10` was good.
 
 # Polynomial Fitting and MPC Preprocessing
 
@@ -156,7 +156,7 @@ The waypoints to estimate the road curves is given at an arbitrary global coordi
   }
 ```
 
-I used this to get a 3rd order polynomial as an estimate of the current road curve ahead.
+I used this to get a 3rd order polynomial as an estimate of the current road curve ahead, as it is said that it is a good fit of most roads. Using a smaller order polynomial runs the risk of underfitting, and likewise using a higher order polynomial would be prone to overfitting or an inefficient unnecessary added complexity.
 
 To get the fitted curve, I used a function adapted from here: 
 - https://github.com/JuliaMath/Polynomials.jl/blob/master/src/Polynomials.jl#L676-L716
