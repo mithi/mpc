@@ -53,26 +53,24 @@ We can compute for the errors which is the difference between our desired positi
 
 ### `cte`
  - This is the cross track error which is the difference between our desired position and actual position. We can use our fitted polynomial at point px = 0 to get the position where we should
- currently be. `cte = f(0)`
+ currently be. 
+ - `cte = f(0)`
 
 ### `epsi`
- - This is the orientation error which is the difference between our desired heading and actual heading. Our desired orientation is the heading tangent to our road curve. This can be computed using an arctan to the derivative of the fitted polynomial function at point px = 0 to get the angle
- to which we should be heading. ```epsi = arctan(f`(0)) where f` is the derivative of f```
+ - This is the orientation error which is the difference between our desired heading and actual heading. Our desired orientation is the heading tangent to our road curve. This can be computed using an arctan to the derivative of the fitted polynomial function at point px = 0 to get the angle to which we should be heading. 
+ - ```epsi = arctan(f`(0)) where f` is the derivative of f```
 
 # ACTUATIONS: STEERING, THROTTLE, AND BRAKE
 From this we use Model Predictive Control to give what what is our best course of action. There are two modes of *actuation* we can use to control our vehicle.
 
 ### `delta`
-  - This is the steering value which represents the angle of which we turn our vehicle, which I suppose is the angle of the vehicle's tires. The angle is restricted to be between -25 and 25 degrees but is mapped to the values between -1 and 1. **In my code, I have restricted this to only be between -0.75 and 0.75** as I which to be conservative as opposed to aggressive in our steering.
-  Since we can plan ahead, we shouldn't be needing to suddenly steer a large angle.
+  - This is the steering value which represents the angle of which we turn our vehicle, which I suppose is the angle of the vehicle's tires. The angle is restricted to be between -25 and 25 degrees but is mapped to the values between -1 and 1. **In my code, I have restricted this to only be between -0.75 and 0.75** as I which to be conservative as opposed to aggressive in our steering. Since we can plan ahead, we shouldn't be needing to suddenly steer a large angle.
 
 ## `a`
-  - This is the *throttle* or *brake* value which represents the acceleration or deceleration of our vehicle. In an actual vehicle, this is controlled by the brake pedal. The simulator expects values between -1 and 1. Negative values represents braking and positive values represents throttle.
-  **In my code, I have restricted the range to only be between -0.5 and 1** as ideally we shouldn't be suddenly pressing the brakes all of a sudden since we are able to plan ahead.
+  - This is the *throttle* or *brake* value which represents the acceleration or deceleration of our vehicle. In an actual vehicle, this is controlled by the brake pedal. The simulator expects values between -1 and 1. Negative values represents braking and positive values represents throttle. **In my code, I have restricted the range to only be between -0.5 and 1** as ideally we shouldn't be suddenly pressing the brakes all of a sudden since we are able to plan ahead.
 
 # KINEMATIC MODEL
-So based on *physics*, here is a simplified version of how the world (with our vehicle in it) works. How the state variables change based elapse time `dt` and our actuations `delta` and `a`.
-We call it our *kinematic* model.
+So based on *physics*, here is a simplified version of how the world (with our vehicle in it) works. How the state variables change based elapse time `dt` and our actuations `delta` and `a`. We call it our *kinematic* model.
 ```
 px` = px + v * cos(psi) * dt
 py` = py + v * sin(psi) ( dt)
