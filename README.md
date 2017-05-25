@@ -1,19 +1,17 @@
 # INTRODUCTION
 
-This is my turn-in code for one of the project in partial fulfillment of the requirements for Udacity's self-driving car Nanodegree program.
+This is my turn-in code for one of the project in partial fulfillment of the requirements for Udacity's self-driving car Nanodegree program. In this project, I have implemented a Model Predictive Control software pipeline to drive a car around a track in a simulator. There is a 100 millisecond latency between actuation commands on top of the connection latency.
 
 ![MPC](https://github.com/mithi/mpc/blob/master/img/pic.png)
 
-In this project, I have implemented a Model Predictive Control software pipeline to drive a car around a track in a simulator. There is a 100 millisecond latency between actuation commands on top of the connection latency.
 
-** IMPORTANT: Please view my screen recording of using my code for the vehicle to drive around the track for
-several laps:**
+### IMPORTANT: Please view my screen recording of using my code for the vehicle to drive around the track for several laps:
 - https://www.youtube.com/watch?v=75ylhM0QsXQ&feature=youtu.be
 - The MPC trajectory path is displayed in green, and the polynomial fitted reference path in yellow.
 - I used 640 x 480 screen resolution, with a graphic quality of fastest 
 - Tested in macOS Sierra Version 10.12.4 Macbook Pro Mid 2014. 2.6 GHz Intel Core i5.
 
-According to wikipedia:
+**According to wikipedia:**
 > Model predictive controllers rely on dynamic models of the process. The main advantage of MPC is the fact that it allows the current timeslot to be optimized, while keeping future timeslots in account. This is achieved by optimizing a finite time-horizon, but only implementing the current timeslot. MPC has the ability to anticipate future events and can take control actions accordingly.
 
 **Here is an overview of the MPC approach as provided by Udacity:**
@@ -37,27 +35,22 @@ In my own words, the MPC method can anticipate future events because we have an 
 **The state variables for the vehicle are the following:**
 
 ### `px`
- - the current location in the x-axis of an arbitrary global map coordinate system
+ - The current location in the x-axis of an arbitrary global map coordinate system
 ### `py`
- - the current location in the x-axis of an arbitrary global map coordinate system
+ - The current location in the x-axis of an arbitrary global map coordinate system
 ### `psi`
- - the current orientation / heading of the vehicle
+ - The current orientation / heading of the vehicle
 ### `v`
- - the current velocity/speed of the vehicle
+ - The current velocity/speed of the vehicle
 
-This is given to us by the simulation every time we ask for it. In addition to this,
-we are also given a series of `waypoints` which are points with respect to
-an arbitrary global map coordinate system we can use to fit a polynomial which is a function
-that estimates the curve of the road ahead. It is known that a 3rd degree polynomial can
-be a good estimate of most road curves. The polynomial function is with respect to the vehicle's
-local coordinate.
+This is given to us by the simulation every time we ask for it. In addition to this, we are also given a series of `waypoints` which are points with respect to an arbitrary global map coordinate system we can use to fit a polynomial which is a function
+that estimates the curve of the road ahead. It is known that a 3rd degree polynomial can be a good estimate of most road curves. The polynomial function is with respect to the vehicle's local coordinate.
 
 # CTE AND EPSI
 
 ![ERROR](https://github.com/mithi/mpc/blob/master/img/errors.png)
 
-**We can compute for the errors which is the difference between our desired position and heading
-and our actual position and heading:**
+We can compute for the errors which is the difference between our desired position and heading and our actual position and heading:
 
 ### `cte`
  - This is the cross track error which is the difference between our desired position and actual position. We can use our fitted polynomial at point px = 0 to get the position where we should
@@ -68,8 +61,7 @@ and our actual position and heading:**
  to which we should be heading. ```epsi = arctan(f`(0)) where f` is the derivative of f```
 
 # ACTUATIONS: STEERING, THROTTLE, AND BRAKE
-From this we use Model Predictive Control to give what what is our best course
-of action. There are two modes of *actuation* we can use to control our vehicle
+From this we use Model Predictive Control to give what what is our best course of action. There are two modes of *actuation* we can use to control our vehicle.
 
 ### `delta`
   - This is the steering value which represents the angle of which we turn our vehicle, which I suppose is the angle of the vehicle's tires. The angle is restricted to be between -25 and 25 degrees but is mapped to the values between -1 and 1. **In my code, I have restricted this to only be between -0.75 and 0.75** as I which to be conservative as opposed to aggressive in our steering.
@@ -152,6 +144,7 @@ G = 15
 ```
 
 # Time Step Length and Frequency
+
 The timestep length `N` is how many states we "lookahead" in the future and the time step frequency `dt` is how much time we expect environment changes.  I chose a `dt = 0.1 seconds` because the that's the latency between actuation commands so it seemed like a good ballpark.  It doesn't make sense to *look too far to the future* because that future might not be as we expect it, so we must not calculate too much before getting feedback from the environment. Also, it will take a long time to look for the best move as I have set this to a time limit of 0.5 seconds. If the `N` is too small, this makes us too short-sighted which defeat the purpose of planning for the future. If the `N` is too small we might not be able to take advantage of looking ahead to plan for curves that we might not be able to do with simpler and less sophisticated control methods like PID. I started with `N = 6` because that's the number of `waypoints` given to us but looking at the displayed green line at the simulator makes too short to plan for curves. At `N = 15` I noticed that given the time limit of 0.5 seconds, I running out of time to minimize the cost objective. With trial-and-error I found that `N = 10` was good.
 
 # Polynomial Fitting and MPC Preprocessing
