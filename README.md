@@ -2,14 +2,13 @@
 
 This is my turn-in code for one of the project in partial fulfillment of the requirements for Udacity's self-driving car Nanodegree program. In this project, I have implemented a Model Predictive Control software pipeline to drive a car around a track in a simulator. There is a 100 millisecond latency between actuation commands on top of the connection latency.
 
-![MPC](https://github.com/mithi/mpc/blob/master/img/pic.png)
-
-
 ### IMPORTANT: Please view my screen recording of using my code for the vehicle to drive around the track for several laps:
 - https://www.youtube.com/watch?v=75ylhM0QsXQ&feature=youtu.be
 - The MPC trajectory path is displayed in green, and the polynomial fitted reference path in yellow.
 - I used 640 x 480 screen resolution, with a graphic quality of fastest 
 - Tested in macOS Sierra Version 10.12.4 Macbook Pro Mid 2014. 2.6 GHz Intel Core i5.
+
+![MPC](https://github.com/mithi/mpc/blob/master/img/pic.png)
 
 **According to wikipedia:**
 > Model predictive controllers rely on dynamic models of the process. The main advantage of MPC is the fact that it allows the current timeslot to be optimized, while keeping future timeslots in account. This is achieved by optimizing a finite time-horizon, but only implementing the current timeslot. MPC has the ability to anticipate future events and can take control actions accordingly.
@@ -74,7 +73,6 @@ From this we use Model Predictive Control to give what what is our best course o
 # KINEMATIC MODEL
 So based on Physics, here is a simplified version of how the world (with our vehicle in it) works. How the state variables change based elapse time `dt` and our actuations `delta` and `a`.
 We call it our *kinematic* model.
-
 ```
 px` = px + v * cos(psi) * dt
 py` = py + v * sin(psi) ( dt)
@@ -85,7 +83,6 @@ Lf - this is the length from front of vehicle to Center-of-Gravity
 ```
 
 We can also predict the next `cte`, and `epsi` based on our actuations.
-
 ```
 cte` = cte - v * sin(epsi) * dt
 epsi` = epsi +  v / Lf * (-delta) * dt
