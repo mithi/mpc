@@ -71,7 +71,7 @@ From this we use Model Predictive Control to give what what is our best course o
   **In my code, I have restricted the range to only be between -0.5 and 1** as ideally we shouldn't be suddenly pressing the brakes all of a sudden since we are able to plan ahead.
 
 # KINEMATIC MODEL
-So based on Physics, here is a simplified version of how the world (with our vehicle in it) works. How the state variables change based elapse time `dt` and our actuations `delta` and `a`.
+So based on *physics*, here is a simplified version of how the world (with our vehicle in it) works. How the state variables change based elapse time `dt` and our actuations `delta` and `a`.
 We call it our *kinematic* model.
 ```
 px` = px + v * cos(psi) * dt
@@ -98,10 +98,11 @@ where f is the road curve function
       f` is the derivative of f
 ```
 
-
 # Cost Function and Penalty Weights
 
-Given the constraints of our model, we should have a good objective such as a cost function to minimize. Here are the factors we should consider:
+Given the constraints of our model, we should have a good objective such as a cost function to minimize. 
+
+Here are the factors we should consider:
 
 - We should minimize the cross track error `cte`, we want to be in our desired position
 - We should minimize our heaidng error `epsi`, we want to be oriented to our desired heading
@@ -158,7 +159,9 @@ The waypoints to estimate the road curves is given at an arbitrary global coordi
 ```
 
 I used this to get a 3rd order polynomial as an estimate of the current road curve ahead.
-To get the fitted curve, I used a function adapted from here: https://github.com/JuliaMath/Polynomials.jl/blob/master/src/Polynomials.jl#L676-L716
+
+To get the fitted curve, I used a function adapted from here: 
+- https://github.com/JuliaMath/Polynomials.jl/blob/master/src/Polynomials.jl#L676-L716
 
 We also have to generate the current errors as discussed above.
 
@@ -188,6 +191,7 @@ churned out to as, we compute the state with the delay factored in using our kin
   // which means position in vehicle's y-axis does not change
   // the steering angle is negative the given value as we have
   // as recall that during transformation we rotated all waypoints by -psi
+  
   MPC mpc;
 
   const double dt = 0.1;
