@@ -20,15 +20,16 @@ Here is an overview of the MPC approach as provided by Udacity.
 ![MPC](https://github.com/mithi/mpc/blob/master/img/mpc.png)
 ![MPC](https://github.com/mithi/mpc/blob/master/img/mpc-algo.png)
 
-In my own words, the MPC method can anticipate future events because we have an idea of what is probably gonna happen if we choose to do what we are going to do. This is because we have a model of how things work in our world (like physics for example). We can anticipate future events based on our current plan of action and also anticipate our next plan of action based on the result of the current plan. Here is a nice series of videos that give a nice overview about the concept behind MPC as well as an in depth discussion:
-- https://www.youtube.com/watch?v=4kCcXGDvjU8&list=PLs7mcKy_nInFEpygo_VrqDFCsQVnGaoy-
+In my own words, the MPC method can anticipate future events because we have an idea of what is probably gonna happen if we choose to do what we are going to do. This is because we have a model of how things work in our world (like physics for example). We can anticipate future events based on our current plan of action and also anticipate our next plan of action based on the result of the current plan.
 
+- Here is a nice series of videos that give a nice overview about the concept behind MPC as well as an in depth discussion:
+-- https://www.youtube.com/watch?v=4kCcXGDvjU8&list=PLs7mcKy_nInFEpygo_VrqDFCsQVnGaoy-
 - For more information, you can check the initial project repo from Udacity here:
 -- https://github.com/udacity/CarND-MPC-Project
 - The simulator used can be downloaded here:
 -- https://github.com/udacity/self-driving-car-sim/releases
 - The flow of the code is largely based on Udacity's sample code and quizzes
---
+-- https://github.com/udacity/CarND-MPC-Quizzes
 
 
 # THE STATE VARIABLES
