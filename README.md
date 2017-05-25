@@ -9,11 +9,14 @@ In this project, I have implemented a Model Predictive Control software pipeline
 Please view my screen recording of using my code for the vehicle to drive around the track for
 several laps:
 - https://www.youtube.com/watch?v=75ylhM0QsXQ&feature=youtu.be
-The MPC trajectory path is displayed in green, and the polynomial fitted reference path in yellow.
+- The MPC trajectory path is displayed in green, and the polynomial fitted reference path in yellow.
+- I used 640 x 480 screen resolution, with a graphic quality of fastest 
+- Tested in macOS Sierra Version 10.12.4 Macbook Pro Mid 2014. 2.6 GHz Intel Core i5.
 
 According to wikipedia:
 > Model predictive controllers rely on dynamic models of the process. The main advantage of MPC is the fact that it allows the current timeslot to be optimized, while keeping future timeslots in account. This is achieved by optimizing a finite time-horizon, but only implementing the current timeslot. MPC has the ability to anticipate future events and can take control actions accordingly.
 
+Here is an overview of the MPC approach as provided by Udacity.
 ![MPC](https://github.com/mithi/mpc/blob/master/img/mpc.png)
 ![MPC](https://github.com/mithi/mpc/blob/master/img/mpc-algo.png)
 
