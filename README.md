@@ -77,7 +77,7 @@ py` = py + v * sin(psi) ( dt)
 psi` = psi + v / Lf * (-delta) * dt
 v` = v + a * dt
 
-Lf - this is the length from front of vehicle to Center-of-Gravity
+Lf - this is the length from front of vehicle to it's Center-of-Gravity
 ```
 
 We can also predict the next `cte`, and `epsi` based on our actuations.
