@@ -70,7 +70,7 @@ From this we use Model Predictive Control to give what what is our best course o
   - This is the *throttle* or *brake* value which represents the acceleration or deceleration of our vehicle. In an actual vehicle, this is controlled by the brake pedal. The simulator expects values between -1 and 1. Negative values represents braking and positive values represents throttle. **In my code, I have restricted the range to only be between -0.5 and 1** as ideally we shouldn't be suddenly pressing the brakes all of a sudden since we are able to plan ahead.
 
 # KINEMATIC MODEL
-So based on *physics*, here is a simplified version of how the world (with our vehicle in it) works. How the state variables change based elapse time `dt` and our actuations `delta` and `a`. We call it our *kinematic* model.
+So based on *physics*, here is a simplified version of how the world (with our vehicle in it) works. How the state variables get updated based elapse time `dt`, the current state, and our actuations `delta` and `a`. 
 ```
 px` = px + v * cos(psi) * dt
 py` = py + v * sin(psi) ( dt)
