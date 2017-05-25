@@ -61,7 +61,7 @@ We can compute for the errors which is the difference between our desired positi
  - ```epsi = arctan(f`(0)) where f` is the derivative of f```
 
 # ACTUATIONS: STEERING, THROTTLE, AND BRAKE
-From this we use Model Predictive Control to give what what is our best course of action. There are two modes of *actuation* we can use to control our vehicle.
+From this we use the MPC method to arrive at our best course of action. There are two modes of *actuation* we can use to control our vehicle.
 
 ### `delta`
   - This is the steering value which represents the angle of which we turn our vehicle, which I suppose is the angle of the vehicle's tires. The angle is restricted to be between -25 and 25 degrees but is mapped to the values between -1 and 1. **In my code, I have restricted this to only be between -0.75 and 0.75** as I which to be conservative as opposed to aggressive in our steering. Since we can plan ahead, we shouldn't be needing to suddenly steer a large angle.
