@@ -20,13 +20,13 @@ This is my turn-in code for one of the project in partial fulfillment of the req
 In my own words, the MPC method can anticipate future events because we have an idea of what is probably gonna happen if we choose to do what we are going to do. This is because we have a model of how things work in our world (like physics for example). We can anticipate future events based on our current plan of action and also anticipate our next plan of action based on the result of the current plan.
 
 - Here is a nice series of videos that give a nice overview about the concept behind MPC as well as an in depth discussion:
--- https://www.youtube.com/watch?v=4kCcXGDvjU8&list=PLs7mcKy_nInFEpygo_VrqDFCsQVnGaoy-
+- - https://www.youtube.com/watch?v=4kCcXGDvjU8&list=PLs7mcKy_nInFEpygo_VrqDFCsQVnGaoy-
 - For more information, you can check the initial project repo from Udacity here:
--- https://github.com/udacity/CarND-MPC-Project
+- - https://github.com/udacity/CarND-MPC-Project
 - The simulator used can be downloaded here:
--- https://github.com/udacity/self-driving-car-sim/releases
+- - https://github.com/udacity/self-driving-car-sim/releases
 - The flow of the code is largely based on Udacity's sample code and quizzes
--- https://github.com/udacity/CarND-MPC-Quizzes
+- - https://github.com/udacity/CarND-MPC-Quizzes
 
 
 # THE STATE VARIABLES
@@ -52,12 +52,12 @@ that estimates the curve of the road ahead. It is known that a 3rd degree polyno
 We can compute for the errors which is the difference between our desired position and heading and our actual position and heading:
 
 ### `cte`
- - This is the cross track error which is the difference between our desired position and actual position. We can use our fitted polynomial at point px = 0 to get the position where we should
+ - This is the cross track error which is the difference between our desired position and actual position. We can use our fitted polynomial at point `px = 0` to get the position where we should
  currently be. 
  - `cte = f(0)`
 
 ### `epsi`
- - This is the orientation error which is the difference between our desired heading and actual heading. Our desired orientation is the heading tangent to our road curve. This can be computed using an arctan to the derivative of the fitted polynomial function at point px = 0 to get the angle to which we should be heading. 
+ - This is the orientation error which is the difference between our desired heading and actual heading. Our desired orientation is the heading tangent to our road curve. This can be computed using an arctan to the derivative of the fitted polynomial function at point `px = 0` to get the angle to which we should be heading. 
  - ```epsi = arctan(f`(0)) where f` is the derivative of f```
 
 # ACTUATIONS: STEERING, THROTTLE, AND BRAKE
