@@ -140,7 +140,7 @@ Here are the factors we should consider:
 - We should minimize the cross track error `cte`, we want to be in our desired position
 - We should minimize our heaidng error `epsi`, we want to be oriented to our desired heading
 - If possible, we want to go as fast as we can. I set this to `v = 100` but you can play around with this. 
-- We don't want to be erratic on our driving IE:
+- We don't want to be erratic in our driving IE:
 - 1. We don't want to steer if we don't really need to
 - 2. We don't want to accelerate or brake if we don't really need to
 - 3. We don't want consecutive steering angles to be too different
@@ -162,7 +162,7 @@ the path that the vehicle was taking is somehow jagged. The least of our concern
 as fast as possible. I also had to increase the weight cost a little bit for the consecutive
 acceleration difference because we don't want to turn too late at road curves.
 
-Ultimately here's the weights I ended up with:
+Ultimately here are the weights I ended up with:
 
 ```
 A = 1500
