@@ -112,7 +112,7 @@ py` = py + v * sin(psi) ( dt)
 psi` = psi + v / Lf * (-delta) * dt
 v` = v + a * dt
 
-Lf - this is the length from front of vehicle to it's Center-of-Gravity
+Lf - this is the length from front of vehicle to its Center-of-Gravity
 ```
 
 We can also predict the next `cte`, and `epsi` based on our actuations.
@@ -139,7 +139,7 @@ Here are the factors we should consider:
 
 - We should minimize the cross track error `cte`, we want to be in our desired position
 - We should minimize our heaidng error `epsi`, we want to be oriented to our desired heading
-- If possible, we want to go as fast as we can `v = 100 mph`
+- If possible, we want to go as fast as we can. I set this to `v = 100` but you can play around with this. 
 - We don't want to be erratic on our driving IE:
 - 1. We don't want to steer if we don't really need to
 - 2. We don't want to accelerate or brake if we don't really need to
