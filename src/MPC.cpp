@@ -142,7 +142,7 @@ MPC::MPC() {
     this->x_upperbound[i] = 1.0e10;
   }
 
-  // all actuation inputs (steering, acceleration) values are between [-1, 1
+  // all actuation inputs (steering, acceleration) should have values between [-1, 1]
   for (int i = ID_FIRST_delta; i < ID_FIRST_a; ++i) {
     this->x_lowerbound[i] = -0.75;
     this->x_upperbound[i] = 0.75;
