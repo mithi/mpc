@@ -32,6 +32,7 @@ In my own words, the MPC method can anticipate future events because we have an 
 - Complete information can be found at the initial repo
 - - https://github.com/udacity/CarND-MPC-Project
 - But in essence it's like this:
+
 #### 1. Install dependencies
 -  Check the dependencies from the repo mentioned above.
 - for example for mac with homebrew here's what I did since I already have most of the dependencies.
@@ -71,7 +72,7 @@ cc=gcc-6 cmake .. && make
 ### `px`
  - The current location in the x-axis of an arbitrary global map coordinate system
 ### `py`
- - The current location in the x-axis of an arbitrary global map coordinate system
+ - The current location in the y-axis of an arbitrary global map coordinate system
 ### `psi`
  - The current orientation / heading of the vehicle
 ### `v`
